@@ -22,6 +22,16 @@
     </form>
   </div>
 
+  <div class="border-2 border-black border-solid">
+    <h2>All Posts</h2>
+    @foreach($posts as $post)
+      <div class="bg-gray-200 p-2 my-2">
+        <h2>{{ $post['title'] }}</h2>
+        <p>{{ $post['body'] }}</p>
+      </div>
+    @endforeach
+  </div>
+
   @else
   <div class="flex flex-row">
     <div class="border-2 border-black border-solid">

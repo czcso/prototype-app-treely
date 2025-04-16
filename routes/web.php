@@ -1,11 +1,13 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
-    return view('app');
+    $posts = Post::all();
+    return view('app', ['posts' => $posts]);
 });
 
 Route::post('/register', [UserController::class, 'user_register']);
