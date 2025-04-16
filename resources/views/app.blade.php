@@ -13,24 +13,35 @@
     <button>Logout</button>
   </form>
 
-  @else
   <div class="border-2 border-black border-solid">
-   <h2>Sign Up</h2>
-    <form method="POST" action="/register"> @csrf
-      <input name="register_name" type="text" placeholder="name" />
-      <input name="register_email" type="email" placeholder="email" />
-      <input name="register_password" type="password" placeholder="password" />
-      <button>Register</button>
-    </form> 
+    <h2>Create a new post</h2>
+    <form method="POST" action="/create-post"> @csrf
+      <input name="title" type="text" placeholder="title here" />
+      <textarea name="body" cols="30" rows="10" placeholder="write something"></textarea>
+      <button>Create</button>
+    </form>
   </div>
-  <div class="border-2 border-black border-solid">
-    <h2>Login</h2>
-     <form method="POST" action="/login"> @csrf
-       <input name="login_name" type="text" placeholder="name" />
-       <input name="login_password" type="password" placeholder="password" />
-       <button>Continue</button>
-     </form> 
-   </div>
+
+  @else
+  <div class="flex flex-row">
+    <div class="border-2 border-black border-solid">
+    <h2>Sign Up</h2>
+      <form method="POST" action="/register"> @csrf
+        <input name="register_name" type="text" placeholder="name" />
+        <input name="register_email" type="email" placeholder="email" />
+        <input name="register_password" type="password" placeholder="password" />
+        <button class="block border-2 border-black border-solid rounded-sm">Register</button>
+      </form> 
+    </div>
+    <div class="border-2 border-black border-solid">
+      <h2>Login</h2>
+      <form method="POST" action="/login"> @csrf
+        <input name="login_name" type="text" placeholder="name" />
+        <input name="login_password" type="password" placeholder="password" />
+        <button class="block border-2 border-black border-solid rounded-sm">Continue</button>
+      </form> 
+    </div>
+  </div>
 
    @endauth
 

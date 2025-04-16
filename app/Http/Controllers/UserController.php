@@ -14,13 +14,13 @@ class UserController extends Controller
             "register_password" => ["required", "min:3", "max:64"]
         ]);
 
-        $user = [
+        $userData = [
             "name" => $incomingFields["register_name"],
             "email" => $incomingFields["register_email"],
             "password" => bcrypt($incomingFields["register_password"])
         ];
 
-        $user = User::create($user);
+        $user = User::create($userData);
         auth()->guard('web')->login($user);
         return redirect('/');
     }
@@ -31,7 +31,7 @@ class UserController extends Controller
             "login_password" => ["required", "min:3", "max:64"]
         ]);
 
-        if(auth()->guard('web')->attempt(["name" => $incomingFields["login_name"], "password" => $incomingFields["login_password"]])) {
+        if (auth()->guard('web')->attempt(["name" => $incomingFields["login_name"], "password" => $incomingFields["login_password"]])) {
             $request->session()->regenerate();
         }
 
